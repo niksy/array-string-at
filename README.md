@@ -71,7 +71,8 @@ Relative index.
 
 ## Browser support
 
-Tested in IE11+ and all modern browsers.
+Tested in Chrome 72, Edge 15, Firefox 65 and should work in all modern browsers
+([support based on Browserslist configuration](https://browserslist.dev/?q=bGFzdCAzIG1ham9yIHZlcnNpb25zLCBzaW5jZSAyMDE5LCBlZGdlID49IDE1LCBub3QgaWUgPiAw)).
 
 ## Test
 
@@ -92,6 +93,6 @@ MIT © [Ivan Nikolić](http://ivannikolic.com)
 [ci]: https://travis-ci.com/niksy/array-string-at
 [ci-img]: https://travis-ci.com/niksy/array-string-at.svg?branch=master
 [browserstack]: https://www.browserstack.com/
-[browserstack-img]: https://www.browserstack.com/automate/badge.svg?badge_key=<badge_key>
+[browserstack-img]: https://www.browserstack.com/automate/badge.svg?badge_key=RUJVZTdFUy9NenNXaTdMYU54aDlnKy9TOFNhNTl4ZlBPNitVVXh1ZWpBVT0tLUpFWk9iWkxRdDV5eUJiWVg3Qm1QTnc9PQ==--e7a7b6fb5fd32b1dd45755978da5c71ab1dbaca0
 
 <!-- prettier-ignore-end -->

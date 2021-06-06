@@ -1,3 +1,4 @@
-last 2 versions
-not ie 10
-ie >= 11
+last 3 major versions
+since 2019
+edge >= 15
+not ie > 0

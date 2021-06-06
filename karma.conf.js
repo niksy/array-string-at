@@ -38,35 +38,37 @@ if (local) {
 		},
 		customLaunchers: {
 			'BS-Chrome': {
-				base: 'BrowserStack',
-				browser: 'Chrome',
-				os: 'Windows',
-				'os_version': '7',
-				project: 'array-string-at',
-				build: 'Automated (Karma)',
-				name: 'Chrome'
+				'base': 'BrowserStack',
+				'project': 'array-string-at',
+				'build': 'Automated (Karma)',
+				'browser': 'Chrome',
+				'browser_version': '72',
+				'name': 'Chrome',
+				'os': 'Windows',
+				'os_version': '7'
+			},
+			'BS-Edge': {
+				'base': 'BrowserStack',
+				'project': 'array-string-at',
+				'build': 'Automated (Karma)',
+				'browser': 'Edge',
+				'browser_version': '15',
+				'name': 'Edge',
+				'os': 'Windows',
+				'os_version': '10'
 			},
 			'BS-Firefox': {
-				base: 'BrowserStack',
-				browser: 'Firefox',
-				os: 'Windows',
-				'os_version': '7',
-				project: 'array-string-at',
-				build: 'Automated (Karma)',
-				name: 'Firefox'
-			},
-			'BS-IE11': {
-				base: 'BrowserStack',
-				browser: 'IE',
-				'browser_version': '11',
-				os: 'Windows',
-				'os_version': '7',
-				project: 'array-string-at',
-				build: 'Automated (Karma)',
-				name: 'IE11'
+				'base': 'BrowserStack',
+				'project': 'array-string-at',
+				'build': 'Automated (Karma)',
+				'browser': 'Firefox',
+				'browser_version': '65',
+				'name': 'Firefox',
+				'os': 'Windows',
+				'os_version': '7'
 			}
 		},
-		browsers: ['BS-Chrome', 'BS-Firefox', 'BS-IE11']
+		browsers: ['BS-Chrome', 'BS-Edge', 'BS-Firefox']
 	};
 }
 

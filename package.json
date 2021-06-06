@@ -34,14 +34,11 @@
     "test": "npm run lint && npm run test:automated",
     "test:automated": "BABEL_ENV=test karma start",
     "test:automated:watch": "npm run test:automated -- --auto-watch --no-single-run",
-    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
+    "version": "if [[ $(git rev-parse --abbrev-ref HEAD) == 'master' ]]; then version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md; else echo; fi"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-member-expression-literals": "^7.12.1",
-    "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/plugin-transform-property-literals": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.2.0",
