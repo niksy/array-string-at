@@ -82,7 +82,7 @@ module.exports = function (baseConfig) {
 			'test/**/*.html': ['html2js'],
 			'test/**/*.js': ['rollup', 'sourcemap']
 		},
-		reporters: ['mocha', 'coverage-istanbul'],
+		reporters: ['mocha', 'coverage'],
 		port: port,
 		colors: true,
 		logLevel: baseConfig.LOG_INFO,
@@ -97,6 +97,9 @@ module.exports = function (baseConfig) {
 		},
 		rollupPreprocessor: {
 			plugins: [
+				istanbul({
+					exclude: ['test/**/*.js', 'node_modules/**/*']
+				}),
 				nodeBuiltins(),
 				babel({
 					exclude: 'node_modules/**',
@@ -114,11 +117,8 @@ module.exports = function (baseConfig) {
 				}),
 				globals(),
 				...rollupConfig.plugins.filter(
-					({ name }) => !['babel'].includes(name)
-				),
-				istanbul({
-					exclude: ['test/**/*.js', 'node_modules/**/*']
-				})
+					({ name }) => !['babel', 'package-type'].includes(name)
+				)
 			],
 			output: {
 				format: 'iife',
@@ -127,11 +127,10 @@ module.exports = function (baseConfig) {
 				intro: 'window.TYPED_ARRAY_SUPPORT = false;' // IE9
 			}
 		},
-		coverageIstanbulReporter: {
-			dir: path.join(__dirname, 'coverage/%browser%'),
-			fixWebpackSourcePaths: true,
-			reports: ['html', 'text'],
-			thresholds: {
+		coverageReporter: {
+			dir: path.join(__dirname, 'coverage'),
+			reporters: [{ type: 'html' }, { type: 'text' }],
+			check: {
 				global: JSON.parse(
 					fs.readFileSync(path.join(__dirname, '.nycrc'), 'utf8')
 				)

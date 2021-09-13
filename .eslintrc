@@ -17,6 +17,9 @@
 				"node": true,
 				"es6": true
 			},
+			"parserOptions": {
+				"sourceType": "script"
+			},
 			"plugins": ["eslint-plugin-unicorn"],
 			"rules": {
 				"no-console": 0,
