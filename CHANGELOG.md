@@ -2,6 +2,12 @@
 
 ## [Unreleased][]
 
+### Added
+
+-   TypeScript types
+-   Test case for `Infinity`
+-   Support for `TypedArray`
+
 ## [1.0.0][] - 2021-06-06
 
 ### Added
