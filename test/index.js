@@ -12,6 +12,7 @@ after(function () {
 });
 
 it('throws for non-string and non-array-like items', function () {
+	// @ts-ignore
 	assert.throws(() => at(42), TypeError);
 });
 
@@ -66,7 +67,7 @@ it('works for sparse arrays', function () {
 });
 
 it('works for typed arrays', function () {
-	const array = new Int8Array([1, [2], [3, 4]]);
+	const array = new Int8Array([1, 2, 3]);
 
 	assert.equal(at(array, 0), array[0]);
 	assert.equal(at(array, -3), array[0]);

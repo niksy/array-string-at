@@ -59,7 +59,7 @@ passed a negative index.
 
 #### item
 
-Type: `string|Array`
+Type: `string|Array<unknown>|TypedArray`
 
 Item to search.
 

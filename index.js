@@ -1,15 +1,19 @@
+/* globals unknown */
 /* eslint-disable no-undefined */
 
 import { loose as isTypedArray } from 'is-typedarray';
 
 /**
- * @param {string|Array} item
- * @param {number} _index
- *
- * @returns {*}
- * @throws {TypeError}
+ * @typedef {Int8Array | Int16Array | Int32Array | Uint8Array | Uint8ClampedArray | Uint16Array | Uint32Array | Float32Array | Float64Array} TypedArray
  */
-export default function ponyfill(item, _index) {
+
+/**
+ * Returns value at specified index. Supports relative indexing from the end when passed a negative index. Uses native implementation if available.
+ *
+ * @param {string|Array<unknown>|TypedArray} item
+ * @param {number}                           [index]
+ */
+function ponyfill(item, index) {
 	if (
 		typeof item !== 'string' &&
 		!Array.isArray(item) &&
@@ -18,7 +22,7 @@ export default function ponyfill(item, _index) {
 		throw new TypeError('Expected a string or array-like item.');
 	}
 
-	let index = Math.trunc(_index) || 0;
+	index = Math.trunc(index ?? 0) || 0;
 	if (index < 0) {
 		index += item.length;
 	}
@@ -28,15 +32,16 @@ export default function ponyfill(item, _index) {
 	return item[index];
 }
 
-export const preferNative = (item, index) => {
-	if (
-		(typeof item === 'string' &&
-			typeof String.prototype.at !== 'undefined') ||
-		(Array.isArray(item) && Array.prototype.at !== 'undefined') ||
-		(isTypedArray(item) && item.at !== 'undefined')
-	) {
-		return item.at(index);
-	}
-	/* istanbul ignore next */
-	return ponyfill(item, index);
-};
+/**
+ * Returns value at specified index. Supports relative indexing from the end when passed a negative index. Uses native implementation if available.
+ *
+ * @param {string|Array<unknown>|TypedArray} item    Item to search.
+ * @param {number}                           [index] Relative index.
+ */
+function preferNative(item, index) {
+	return item?.at?.(index ?? 0) ?? ponyfill(item, index);
+}
+
+export default ponyfill;
+
+export { preferNative };
