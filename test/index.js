@@ -65,6 +65,28 @@ it('works for sparse arrays', function () {
 	assert.deepEqual(at(array, -1), [1]);
 });
 
+it('works for typed arrays', function () {
+	const array = new Int8Array([1, [2], [3, 4]]);
+
+	assert.equal(at(array, 0), array[0]);
+	assert.equal(at(array, -3), array[0]);
+
+	assert.deepEqual(at(array, 1), array[1]);
+	assert.deepEqual(at(array, -2), array[1]);
+
+	assert.deepEqual(at(array, 2), array[2]);
+	assert.deepEqual(at(array, -1), array[2]);
+
+	assert.equal(at(array, 3), undefined);
+	assert.equal(at(array, -4), undefined);
+
+	assert.equal(at([], 0), undefined);
+	assert.equal(at([], -1), undefined);
+
+	assert.equal(at([], Infinity), undefined);
+	assert.equal(at([], Infinity), undefined);
+});
+
 it('uses native implementation if it’s available', function () {
 	assert.equal(preferNative('abc', -1), 'c');
 });

@@ -3,6 +3,8 @@
 const path = require('path');
 const { promises: fs } = require('fs');
 const { default: babel } = require('@rollup/plugin-babel');
+const { default: resolve } = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
 
 module.exports = {
 	input: 'index.js',
@@ -49,6 +51,8 @@ module.exports = {
 		babel({
 			babelHelpers: 'bundled',
 			exclude: 'node_modules/**'
-		})
+		}),
+		resolve(),
+		commonjs()
 	]
 };
