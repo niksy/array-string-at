@@ -27,6 +27,9 @@ it('works for strings', function () {
 
 	assert.equal(at('abc', 3), undefined);
 	assert.equal(at('abc', -4), undefined);
+
+	assert.equal(at('abc', Infinity), undefined);
+	assert.equal(at('abc', Infinity), undefined);
 });
 
 it('works for arrays', function () {
@@ -46,6 +49,9 @@ it('works for arrays', function () {
 
 	assert.equal(at([], 0), undefined);
 	assert.equal(at([], -1), undefined);
+
+	assert.equal(at([], Infinity), undefined);
+	assert.equal(at([], Infinity), undefined);
 });
 
 it('works for sparse arrays', function () {
