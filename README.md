@@ -36,15 +36,23 @@ Beware of
 import at from 'array-string-at';
 
 if (typeof String.prototype.at === 'undefined') {
-	String.prototype.at = function (index) {
-		return at(this, index);
-	};
+	Object.defineProperty(String.prototype, 'at', {
+		configurable: true,
+		writable: true,
+		value: function (index) {
+			return at(this, index);
+		}
+	});
 }
 
 if (typeof Array.prototype.at === 'undefined') {
-	Array.prototype.at = function (index) {
-		return at(this, index);
-	};
+	Object.defineProperty(Array.prototype, 'at', {
+		configurable: true,
+		writable: true,
+		value: function (index) {
+			return at(this, index);
+		}
+	});
 }
 ```
 
